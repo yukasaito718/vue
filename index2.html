@@ -8,22 +8,26 @@
 <body>
     <script src="vue.js"></script>
 
+<!-- テンプレート構文　以下app内　HTMLではなくテンプレート構文として捉える -->
+<!-- {{関数やjsの構文や三行演算子も書ける}} -->
     <div id="app">
         <p>{{ message }}</p>
-        <buttonv-on:click="reverseMessage">メッセージ反転</button>
+        <p>{{ number + 5 }}</p>
+        <p>{{ ok ? 'YES' : 'NO' }}</p>
+        <p>{{ sayHi() }}</p>
     </div>
+
     <script>
         new Vue({
             el: "#app",
             data: {
-                message: "HelloWorld!"
+                message: 'HelloWorld!',
+                number: 3,
+                ok: true
             },
             methods: {
-                reverseMessage: function() {
-                    this.message = this.message
-                    .split('')
-                    .reverse()
-                    .jqin("");
+                sayHi: function() {
+                    return 'Hi';
                 }
             }
         })
