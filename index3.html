@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="vue.js"></script>
+
+
+    <!-- テンプレート構文 -->
+    <div id="app">
+        <p>{{ sayHi() }}</p>
+    </div>
+
+
+    <!-- vue インスタンス -->
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                message: 'HelloWorld!',
+                number: 3,
+                ok: true
+            },
+            methods: {
+                sayHi: function() {
+                    // インスタンス内でプロパティを呼び出したい場合はthisが必要
+                    return this.message;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

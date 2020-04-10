@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="vue.js"></script>
+
+
+    <!-- テンプレート構文 -->
+    <div id="app">
+        <!-- 一度だけ描写したい時使用 -->
+        <p v-once>{{ message }}</p>
+        <p>{{ sayHi() }}</p>
+    </div>
+
+
+    <!-- vue インスタンス -->
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                message: 'HelloWorld!'
+            },
+            methods: {
+                sayHi() {
+                    this.message = 'Hello VueJs'
+                    return 'Hi'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

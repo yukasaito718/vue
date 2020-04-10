@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="vue.js"></script>
+
+
+    <!-- テンプレート構文 -->
+    <div id="app">
+        <!-- 引数をとるディレクティブ　値（URL）を属性（href)で表示させる -->
+        <!-- <a v-bind:href="{{ url }}">google</a> -->
+        <!-- v-bind省略した形 -->
+        <a :href="url">google</a>
+    </div>
+
+
+    <!-- vue インスタンス -->
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                url: 'https://google.com'
+            }
+        })
+    </script>
+</body>
+</html>

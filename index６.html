@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="vue.js"></script>
+
+
+    <!-- テンプレート構文 -->
+    <div id="app">
+        <div>{{ html }}</div>
+        <!-- htmlタグを読み取って表示できるようにできるため、悪用の可能性があり、信頼のおけるコンテンツのみ使用した方が良い -->
+        <div v-html="html"></div>
+    </div>
+
+
+    <!-- vue インスタンス -->
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                html: '<h1>H1です<h1>'
+            }
+        })
+    </script>
+</body>
+</html>
