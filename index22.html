@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="sample.css">
+    <title>Document</title>
+</head>
+    <body>
+        <script src="vue.js"></script>
+
+
+        <!-- テンプレート構文 -->
+        <div id="app">
+            <ul>
+                <!-- v-forは必要最低限に動くため要素を使い回すためkeyで指定しないとインプットと連動しない -->
+                <div v-for="fruit in fruits" :key="fruit">
+                    <li>{{fruit}}</li>
+                    <input type="text">
+                </div>
+            </ul>
+            <button @click="remove">先頭を削除</button>
+        </div>
+
+
+        <!-- vue インスタンス -->
+        <script>
+            new Vue({   
+                el: "#app",
+                data: {
+                    fruits: ['りんご','ばなな','ぶどう']
+                },
+                methods: {
+                    remove: function() {
+                        this.fruits.shift()
+                    }
+                }
+
+            })
+        </script>
+    </body>
+</html>

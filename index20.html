@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="sample.css">
+    <title>Document</title>
+</head>
+    <body>
+        <script src="vue.js"></script>
+
+
+        <!-- テンプレート構文 -->
+        <div id="app">
+            <ul>
+                <!-- indexを第二引数に指定して配列番号を取得できる -->
+                <li v-for="(fruit,index) in fruits">({{index}}){{fruit}}</li>
+            </ul>
+            <ul>
+                <!-- 引数の順番（値、プロパティ、インデックス）連想配列のような形 -->
+                <li v-for="(value, key, index) in object">({{index}}){{key}}-{{value}}</li>
+            </ul>
+        </div>
+
+
+        <!-- vue インスタンス -->
+        <script>
+            new Vue({   
+                el: "#app",
+                data: {
+                    fruits: ['りんご','ばなな','ぶどう'],
+                    object: {
+                        firstName: '太郎',
+                        lastName: '田中',
+                        age: 21
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
