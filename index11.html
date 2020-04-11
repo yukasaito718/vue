@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="vue.js"></script>
+
+
+    <!-- テンプレート構文 -->
+    <div id="app">
+        <!-- keyup キーを押し終わった瞬間に挙動する、key修飾子.enter（エンターキー）.space（スペースキー） -->
+        <!-- エンター、スペースキーを押したときmyAlertを挙動する -->
+        <input type="text" v-on:keyup.enter.space="myAlert">
+    </div>
+
+
+    <!-- vue インスタンス -->
+    <script>
+        new Vue({
+            el: "#app",
+            // data vue インスタンスの中の固有プロパティで変数を保持する
+            data:{
+            },
+            // vue インスタンスの中の固有プロパティで関数を保持する
+            methods: {
+                myAlert(){
+                    alert('アラート！！！');
+                }
+
+
+            }
+        })
+    </script>
+</body>
+</html>

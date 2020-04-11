@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body>
+        <script src="vue.js"></script>
+
+
+        <!-- テンプレート構文 -->
+        <div id="app">
+            <!-- ウォッチャ　特定のデータが変わった時に処理を実行する -->
+            <p>{{counter}}</p>
+            <button @click="counter += 1">+1</button>
+            <p>{{ lessThanThree }}</p>
+        </div>
+
+
+        <!-- vue インスタンス -->
+        <script>
+            new Vue({
+                el: "#app",
+                // dataは動的な物を保持できず初期値を扱う　※例lessThanThree: > 3 ? '3より上' : '3以下'
+                data:{
+                    counter: 0
+                },
+                // 動的に初期値を扱いたい場合computed、更にcomputedは参照したときのみ実行されるため負荷が少ない （methodsだと毎回実行されてしまう）
+                computed: {
+                    lessThanThree: function() {
+                        return this.counter >3? '3より上' : '3以下'
+                    }
+                },
+                // computedは非同期処理に向かない（非同期はreturnが使えない）ためwatchを利用した方が良い
+                watch: {
+                    counter: function(){
+                        var vm = this;
+                        setTimeout(function(){
+                            vm.counter = 0
+                        }, 3000)
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

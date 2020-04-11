@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="sample.css">
+    <title>Document</title>
+</head>
+    <body>
+        <script src="vue.js"></script>
+
+
+        <!-- テンプレート構文 -->
+        <div id="app">
+            <h1 :style= "{color: textColor, 'background-color':bgColor}">hello</h1>
+            <!-- 書き換え　こっちの方が複数記述してもすっきりしてわかりやすい -->
+            <h1 :style="[styleObject,baseStyles]">HELLO</h1>
+        </div>
+
+
+        <!-- vue インスタンス -->
+        <script>
+            new Vue({   
+                el: "#app",
+                data: {
+                    textColor: 'red',
+                    bgColor: 'blue',
+
+                    // 書き換え　こっちの方が複数記述してもすっきりしてわかりやすい
+                    styleObject: {
+                        color: 'red',
+                        'background-color': 'blue'
+                    },
+                    baseStyles: {
+                        fontSize: '60px'
+                    }
+
+                }
+            })
+        </script>
+    </body>
+</html>

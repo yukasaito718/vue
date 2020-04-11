@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body>
+        <script src="vue.js"></script>
+
+
+        <!-- テンプレート構文 -->
+        <div id="app">
+            <p>{{counter}}</p>
+            <!-- v-onディレクティブは（）をつけてもつけなくても実行される -->
+            <button @click="countUp">+1</button>
+            <button @click="countUp">+1</button>
+
+            <!-- {{}}内はmethodは（）、computedは（）なし出ないとエラーになる -->
+            <p>{{ doubleCounterComputed }}</p>
+            <p>{{ doubleCounterMethod() }}</p>
+        </div>
+
+
+        <!-- vue インスタンス -->
+        <script>
+            new Vue({
+                el: "#app",
+                // dataは動的な物を保持できず初期値を扱う　※例lessThanThree: > 3 ? '3より上' : '3以下'
+                data:{
+                    counter: 0
+                },
+                // 動的に初期値を扱いたい場合computed、更にcomputedは参照したときのみ実行されるため負荷が少ない （methodsだと毎回実行されてしまう）
+                computed: {
+                    doubleCounterComputed: function() {
+                        return this.counter * 2;
+                    }
+                },
+                methods: {
+                    countUp: function() {
+                        this.counter += 1;
+                    },
+                    doubleCounterMethod: function(){
+                        return this.counter * 2;
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

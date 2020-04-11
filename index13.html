@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body>
+        <script src="vue.js"></script>
+
+
+        <!-- テンプレート構文 -->
+        <div id="app">
+            <!-- v-modelを使用するとテンプレートとインスタンス内の双方向にバインディング（接続）できる -->
+            <!-- 下記の挙動は初期値はmessage(こんにちは)と表示され、フォームを入力するとノータイムでmessageの値が変換される -->
+            <input type="text" v-model="message">
+            <h1>{{message}}</h1>
+
+        </div>
+
+
+        <!-- vue インスタンス -->
+        <script>
+            new Vue({
+                el: "#app",
+                // data vue インスタンスの中の固有プロパティで変数を保持する
+                data:{
+                    message:'こんにちは'
+                }
+            })
+        </script>
+    </body>
+</html>

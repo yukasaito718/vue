@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="vue.js"></script>
+
+
+    <!-- テンプレート構文 -->
+    <div id="app">
+        <p>現在{{number}}回クリックされています</p>
+        <!-- v-onもv-bindと同じく第一引数のdomeventを動的にとれる -->
+        <button v-on:[event] ="countUp(2)">カウントアップ</button>
+        <!-- v-onは＠で省略できる　上記と同じ挙動になる -->
+        <button @click ="countUp(2)">カウントアップ</button>
+
+
+    </div>
+
+
+    <!-- vue インスタンス -->
+    <script>
+        new Vue({
+            el: "#app",
+            // data vue インスタンスの中の固有プロパティで変数を保持する
+            data:{
+                number: 0,
+                event: 'click'
+
+            },
+            // vue インスタンスの中の固有プロパティで関数を保持する
+            methods: {
+                countUp: function(times){
+                    this.number +=1 * times
+                }
+            }
+        })
+    </script>
+</body>
+</html>
