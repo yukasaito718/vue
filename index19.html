@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="sample.css">
+    <title>Document</title>
+</head>
+    <body>
+        <script src="vue.js"></script>
+
+
+        <!-- テンプレート構文 -->
+        <div id="app">
+            <!-- v-if 条件分岐レンダリング if文 -->
+            <p v-if ="ok">ok</p>
+            <p v-else-if="maybeOk">maybe ok</p>
+            <!-- v-if.elseifがfalseのとき表示　※v-ifまたはelseifの直下に書かないとエラー出る -->
+            <p v-else>not ok</p>
+
+            <!-- templateタグ　ブラウザで検証に表示されなくなる group化したい時使う -->
+            <template v-if="ok">
+                <p>hello</p>
+                <p>good bye</p>
+                <p>おっはー</p>
+            </template>
+            <button @click="ok = !ok">button</button>
+
+            <!-- v-showは初期描画のコストが高い、v-ifは要素を削除しているため切り替えに時間がかかる -->
+            <!-- 頻繁に切り替えるときはv-show,最初の切り替えなど頻度が低いときはv-ifを使用する -->
+            <button @click="ok = !ok">ボタン</button>
+            <p v-if>IF</p>
+            <p v-show="ok">Show</p>
+
+        </div>
+
+
+        <!-- vue インスタンス -->
+        <script>
+            new Vue({   
+                el: "#app",
+                data: {
+                    ok: false,
+                    maybeOk: true
+                }
+            })
+        </script>
+    </body>
+</html>
