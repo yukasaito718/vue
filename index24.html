@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="sample.css">
+    <title>Document</title>
+</head>
+    <body>
+        <script src="vue.js"></script>
+
+
+        <!-- テンプレート構文 -->
+        <div id="app">
+            <p>{{message}}</p>
+
+        </div>
+
+
+        <!-- vue インスタンス -->
+        <script>
+            // vueインスタンスを複数作ることはできるが、なるべく複雑な処理になるためなるべく作らないようにする
+            let vm = new Vue({   
+                el: "#app",
+                data: {
+                    message: 'インスタンス１'.message,
+                    name: 'インスタンス２'
+                }
+            })
+            // 宣言内にコードを入れないとvuejsのリアクティブシステム（変更をする機能？）が起動しない
+            // 各プロパティごとにgetterとsetterがありリアクティブシステムを動かしているが、宣言外だとつかない
+            vm.name = 'インスタンス２'
+
+            console.log(vm)
+        </script>
+    </body>
+</html>

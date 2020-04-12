@@ -13,7 +13,8 @@
         <!-- テンプレート構文 -->
         <div id="app">
             <ul>
-                <!-- v-forは必要最低限に動くため要素を使い回すためkeyで指定しないとインプットと連動しない -->
+                <!-- key属性はインデックスを指定してはいけない　※順番が変わるため -->
+                <!-- v-forは必要最低限に動くために要素を使い回すため、keyで対応づけないと予期しないエラーが起きる -->
                 <div v-for="fruit in fruits" :key="fruit">
                     <li>{{fruit}}</li>
                     <input type="text">
@@ -32,10 +33,10 @@
                 },
                 methods: {
                     remove: function() {
+                        // 先頭を削除
                         this.fruits.shift()
                     }
                 }
-
             })
         </script>
     </body>

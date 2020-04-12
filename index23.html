@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="sample.css">
+    <title>Document</title>
+</head>
+    <body>
+        <script src="vue.js"></script>
+
+
+        <!-- テンプレート構文 -->
+        <div id="app">
+            <p>{{message}}</p>
+        </div>
+
+        <div id="app2">
+            <p>{{message}}</p>
+            <button @click="changeMessage1">インスタンス１のメッセージ変更</button>
+        </div>
+
+
+        <!-- vue インスタンス -->
+        <script>
+            // vueインスタンスを複数作ることはできるが、なるべく複雑な処理になるためなるべく作らないようにする
+            let vm1 = new Vue({   
+                el: "#app",
+                data: {
+                    message: 'インスタンス１'
+                }
+            })
+
+            let vm2 = new Vue ({
+                el: "#app2",
+                data: {
+                    message: 'インスタンス2'
+                },
+                methods: {
+                    changeMessage1: function() {
+                        // 外のインスタンスから接続するには宣言名.data名と記述する
+                        vm1.message = "インスタンス２から変更"
+                    }
+
+                }
+            })
+        </script>
+    </body>
+</html>
