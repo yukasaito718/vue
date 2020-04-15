@@ -25,13 +25,24 @@
                 data: {
                     message: 'インスタンス１'.message,
                     name: 'インスタンス２'
+                },
+                // render関数
+                // 一度、vueを経由してから仮想DOMを構築
+                // 仮想DOMのために仮想NODEを返している
+                render: function(createEvent) {
+                    return createElement('h1','こんにちは' + this.name);
+
                 }
+
             })
             // 宣言内にコードを入れないとvuejsのリアクティブシステム（変更をする機能？）が起動しない
             // 各プロパティごとにgetterとsetterがありリアクティブシステムを動かしているが、宣言外だとつかない
             vm.name = 'インスタンス２'
 
             console.log(vm)
+            // document とは　ブラウザがhtmlを受け取り、作られるオブジェクト
+            // 直接DOMを構築する
+            document.createElement('div')
         </script>
     </body>
 </html>
