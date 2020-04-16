@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="sample.css">
+    <title>Document</title>
+</head>
+
+
+    <body>
+        <script src="vue.js"></script>
+
+
+        <!-- テンプレート構文 -->
+        <div id="app">
+            <my-component></my-component>
+            <my-component></my-component>
+        </div>
+
+        <div id="app2">
+            <my-component></my-component>
+            <my-component></my-component>
+        </div>
+
+        <!-- vue インスタンス -->
+        <script>
+            // componentはdataは関数でないといけない
+            // オブジェクトにするとdataを共有してしまい全て同じ表示になってしまう
+            //グローバル登録（インスタンス外で登録）とローカル登録（vueインスタンス内で登録）の書き方ができる
+
+            let component = {
+                data: function() {
+                    return {
+                        number:12
+                    }
+                },
+                template: '<p>いいね{{number}}<button @click = "increment">+1</button></p>',
+                methods: {
+                    increment: function() {
+                        this.number += 1;
+                    }
+                }
+            }
+
+            // Vue.component('my-component',{
+            //     data: function() {
+            //         return {
+            //             number: 12
+            //         }       
+            //     },
+            //     template: '<p>いいね({{number}})<button @click="increment">+1</button></p>',
+            //     methods: {
+            //         increment: function() {
+            //             this.number += 1;
+            //         }
+            //     }
+            // })
+            new Vue({   
+                el: "#app",
+                components: {
+                    'my-component': component
+                }
+            })
+            new Vue({   
+                el: "#app2",
+            })
+            
+        </script>
+
+    </body>
+</html>
